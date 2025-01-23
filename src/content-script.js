@@ -8,13 +8,19 @@ window.addEventListener("load", (event) => {
 
 function addHostFilter(host) {
     browser.storage.sync.get().then((settings) => {
-        if (settings.hostname_filter === null) {
-            settings.hostname_filter = [host];
-        }
-        else {
-            settings.hostname_filter.push(host);
+
+        if (Object.keys(settings).length === 0){
+            settings = {
+                hostname_filter: [],
+                delay: 50,
+                reload_after_filter: false,
+            }
         }
 
+        if(settings.hostname_filter.includes(host))
+            return;
+
+        settings.hostname_filter.push(host);
         browser.storage.sync.set(settings).then(() => {
             if (settings.reload_after_filter)
                 window.location.reload();
@@ -25,15 +31,14 @@ function addHostFilter(host) {
 
 function loaded() {
     browser.storage.sync.get().then((settings) => {
-        let delay = 200;
 
-        if (settings.delay !== null) {
-            delay = settings.delay;
-        }
-        else {
-            browser.storage.sync.set({
-                delay: 200
-            });
+        if (Object.keys(settings).length === 0){
+            settings = {
+                hostname_filter: [],
+                delay: 50,
+                reload_after_filter: false,
+            }
+            browser.storage.sync.set(settings);
         }
 
         setTimeout(function () {
@@ -74,16 +79,12 @@ function loaded() {
                     let filter = settings.hostname_filter[j];
                     if (link.href.includes(filter)) {
                         result.style.display = "none";
-                        console.log("Removed: " + link.href);
 
-                        if (filter in hiddenHosts) {
-                            console.log("was already one")
+                        if (filter in hiddenHosts) 
                             hiddenHosts[filter] = hiddenHosts[filter] + 1;
-                        }
-                        else {
-
+                        else 
                             hiddenHosts[filter] = 1;
-                        }
+                        
                         break;
                     }
                 }
@@ -103,19 +104,16 @@ function loaded() {
 
                 result.appendChild(blockLink);
             }
-            console.log(hiddenHosts);
 
             if (Object.keys(hiddenHosts).length !== 0) {
                 let mainElement = document.getElementById("main");
-                console.log(mainElement);
                 let hiddenHostsInfo = document.createElement("span");
 
                 let text = "";
 
-                for (let key in hiddenHosts) {
+                for (let key in hiddenHosts)
                     text = text + hiddenHosts[key] + "x " + key + " ";
-                }
-                console.log(text);
+                
                 text = text.trimEnd()
                 hiddenHostsInfo.innerText = " removed: " + text;
                 hiddenHostsInfo.toolTip = text;
@@ -126,10 +124,7 @@ function loaded() {
                 mainElement.insertBefore(hiddenHostsInfo, mainElement.firstChild);
 
             }
-
-
-            console.log(settings);
-        }, delay);
+        }, settings.delay);
 
     });
 
