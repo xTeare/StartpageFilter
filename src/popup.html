@@ -1,0 +1,31 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="color-scheme" />
+  <link rel="stylesheet" href="popup.css" />
+</head>
+
+<body>
+
+  <div class="container">
+    <p>General settings</p>
+    <div class="mb-s">
+      <label for="delay">Delay after page load</label>
+      <input id="delay" type="number" />
+    </div>
+    <div>
+      <input id="reloadAfterFilter" type="checkbox" style="margin-left: 0; padding-left: 0;"/>
+      <label for="reloadAfterFilter">Reload after blocking host</label>
+    </div>
+  </div>
+  <div class="container">
+    <p>Filter only by hostname</p>
+    <textarea id="filter-hostname" rows="5"></textarea>
+  </div>
+  <script src="popup.js"></script>
+</body>
+
+</html>

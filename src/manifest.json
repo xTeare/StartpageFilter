@@ -1,0 +1,54 @@
+{
+    "manifest_version": 2,
+    "name": "Startpage Filter",
+    "version": "1.0",
+    "description": "Filter search results from startpage.com",
+    "icons": {
+        "48": "icons/border-48.png"
+    },
+    "browser_action": {
+      "default_icon": "icons/border-48.png",
+      "theme_icons": [{
+          "light": "icons/border-48.png",
+          "dark": "icons/border-48.png",
+          "size": 48
+      }],
+      "default_title": "Beastify",
+      "default_popup": "popup.html"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*.mozilla.org/*",
+                "https://www.startpage.com/sp/search"
+            ],
+            "js": [
+                "borderify.js"
+            ],
+            "run_at": "document_end"
+        }
+    ],
+    "background": {
+        "scripts": [
+            "background.js"
+        ],
+        "persistent": false,
+        "type": "module"
+    },
+
+    "options_ui": {
+        "page": "options.html",
+        "open_in_tab":true
+    },
+
+    "permissions": [
+        "storage",
+        "tabs"
+        ],
+  
+    "browser_specific_settings": {
+      "gecko": {
+        "id": "addon@example.com"
+      }
+    }
+}

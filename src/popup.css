@@ -1,0 +1,66 @@
+html,
+body {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #a0a0a0;
+    width: 450px;
+    background-color: #1f1f1f;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+    overflow: hidden;
+}
+
+.mb-s{
+    margin-bottom: 6px;
+}
+
+p {
+    color: #dfdfdf;
+}
+
+.container {
+    overflow: hidden;
+    width: 100%;
+    padding: 0;
+    margin: 8px 8px 8px 8px;
+}
+
+input[type=number],
+textarea {
+    background-color: #1f1f1f;
+    color: #a0a0a0;
+    border: 1px solid #101010;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    outline: none;
+    border-radius: 5px;
+}
+
+textarea {
+    margin: 0;
+    padding: 2px 4px;
+    width: calc(100% - 14px);
+    max-width: calc(100% - 14px);
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+input[type=number]:active,
+input[type=number]:focus-visible,
+input[type=number]:focus-within,
+input[type=number]::-moz-focus-inner,
+input[type=number]::-moz-focus-outer,
+input[type=number]:focus textarea:active,
+textarea:focus-visible,
+textarea:focus-within,
+textarea::-moz-focus-inner,
+textarea::-moz-focus-outer,
+textarea:focus {
+    border: 1px solid #101010;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+
+}
