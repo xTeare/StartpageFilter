@@ -1,6 +1,7 @@
 function onError(error) {
     console.log(`Error: ${error}`);
 }
+
 function saveOptions(e) {
     e.preventDefault();
     var lines = document.querySelector("#filter-hostname").value.split('\n');
@@ -24,8 +25,8 @@ function restoreOptions() {
         if (value.reload_after_filter !== null) {
             reloadAfterFilter.checked = value.reload_after_filter;
         }
-        else{
-            reloadAfterFilter.checked = true;
+        else {
+            reloadAfterFilter.checked = false;
         }
 
         if (value.hostname_filter !== null) {

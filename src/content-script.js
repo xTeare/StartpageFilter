@@ -16,9 +16,9 @@ function addHostFilter(host) {
         }
 
         browser.storage.sync.set(settings).then(() => {
-            if(settings.reload_after_filter)
+            if (settings.reload_after_filter)
                 window.location.reload();
-                // browser.runtime.sendMessage({ command: "reload" });
+            // browser.runtime.sendMessage({ command: "reload" });
         })
     })
 }
@@ -76,13 +76,12 @@ function loaded() {
                         result.style.display = "none";
                         console.log("Removed: " + link.href);
 
-                        if (filter in hiddenHosts)
-                        {
+                        if (filter in hiddenHosts) {
                             console.log("was already one")
                             hiddenHosts[filter] = hiddenHosts[filter] + 1;
                         }
-                        else{
-                            
+                        else {
+
                             hiddenHosts[filter] = 1;
                         }
                         break;
@@ -106,7 +105,7 @@ function loaded() {
             }
             console.log(hiddenHosts);
 
-            if (Object.keys(hiddenHosts).length !== 0 ) {
+            if (Object.keys(hiddenHosts).length !== 0) {
                 let mainElement = document.getElementById("main");
                 console.log(mainElement);
                 let hiddenHostsInfo = document.createElement("span");

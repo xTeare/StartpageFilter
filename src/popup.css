@@ -1,6 +1,6 @@
 html,
 body {
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #a0a0a0;
     width: 450px;
     background-color: #1f1f1f;
@@ -10,7 +10,7 @@ body {
     overflow: hidden;
 }
 
-.mb-s{
+.mb-s {
     margin-bottom: 6px;
 }
 
